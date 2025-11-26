@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Update Salary</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+</head>
+<body>
+	<div class="container my-5">
+		<h2>Update Employee Salary</h2>
+
+		<!-- Message area (hidden by default) -->
+		<div id="messageBox"></div>
+
+		<form action="updateSalary" method="post" class="mt-4">
+			<div class="mb-3">
+				<label class="form-label">Employee ID</label> <input type="number"
+					name="emp_id" class="form-control" required>
+			</div>
+			<div class="mb-3">
+				<label class="form-label">New Basic Salary (₹)</label> <input
+					type="number" name="basic_salary" class="form-control" step="0.01"
+					required>
+			</div>
+			<button type="submit" class="btn btn-warning">Update</button>
+			<a href="index.html" class="btn btn-secondary ms-2">Back</a>
+		</form>
+	</div>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+	<script>
+    // Read query parameters from the URL
+    const params = new URLSearchParams(window.location.search);
+    const msgBox = document.getElementById("messageBox");
+
+    if (params.has("error")) {
+      msgBox.innerHTML = `<div class="alert alert-danger">${params.get("error")}</div>`;
+    } else if (params.has("success")) {
+      msgBox.innerHTML = `<div class="alert alert-success">${params.get("success")}</div>`;
+    }
+  </script>
+</body>
+</html>
